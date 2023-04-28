@@ -1,6 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 export default function Navbar(props) {
+  const popAlert = (mode) =>{
+    alert(`${mode} mode is activated`);
+  }
+ 
+  
   return (
   <nav className={`navbar navbar-expand-lg bg-${props.mode}`}>
   <div className={`container-fluid `} >
@@ -18,32 +23,36 @@ export default function Navbar(props) {
           <Link className={`nav-link active text-${props.mode ==='light'?'#395e93':'light'}`} to="/about">About</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">{props.Abouttext}</a>
+          <a className="nav-link" href="/">{props.Abouttext}</a>
         </li>
       </ul>
-      {/* <htmlForm className="d-flex" role="search">
-        <input className="htmlForm-control me-2" style = {{marginRight:'10px'}} type="search" placeholder="Search" aria-label="Search"/>
-        <button className="btn btn-success" type="submit">Search</button>
-  
-      </htmlForm> */}
+      <div className="d-flex">
+      <div className="bg-primary rounded mx-2" onClick={()=>{props.toggleMode('primary'); popAlert('primary');}}style={{height:'20px' , width:'20px',cursor:'pointer'}}></div>
+      <div className="bg-danger rounded mx-2" onClick={()=>{props.toggleMode('danger'); popAlert('danger');}} style={{height:'20px' , width:'20px',cursor:'pointer'}}></div>
+      <div className="bg-warning rounded mx-2" onClick={()=>{props.toggleMode('warning'); popAlert('warning');}}style={{height:'20px' , width:'20px',cursor:'pointer'}}></div>
+      <div className="bg-success rounded mx-2" onClick={()=>{props.toggleMode('success'); popAlert('success');}}style={{height:'20px' , width:'20px',cursor:'pointer'}}></div>
+      </div>
+
+
       <div className={`Form-check Form-switch } text-${props.mode ==='light'?'#395e93':'light'}`}>
-      <input className="Form-check-input" style = {{marginRight:'5px'}} onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
-      <label className="Form-check-label"  htmlFor="flexSwitchCheckDefault">Dark Mode</label>
+      <input className="Form-check-input" style = {{marginRight:'5px'}} onClick={()=>props.toggleMode(null)} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
+      <label className="Form-check-label"  htmlFor="flexSwitchCheckDefault"> Dark Mode</label>
      </div>
-    </div>
   </div>
-</nav>
+  </div>
 
-
+ </nav>
   )
 }
 
 
 
 
-    // Navbar.prototype ={title : PropTypes.string ,
-    //                    Abouttext :PropTypes.string,
-    //                 }
+
+
+    // Navbar.prototype={title : PropTypes.string ,
+     //                Abouttext :PropTypes.string ,
+     //              }
 
 
     // Navbar .defaultProps ={
